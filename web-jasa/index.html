@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Toko Elektronik</title>
+    <link rel="icon" href="assets/logo.png" />
+    <link rel="stylesheet" href="assets/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+      :root {
+        --dark-blue: #102542;
+        --desert-sand: #ffb641;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        background-color: var(--dark-blue);
+        font-family: "Poppins", serif;
+      }
+
+      header nav {
+        background-color: var(--desert-sand);
+        padding: 1em;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .logo {
+        margin-right: auto;
+        display: flex;
+        align-items: center;
+        color: var(--dark-blue);
+        font-size: 1.5em;
+        cursor: pointer;
+      }
+
+      .logo img {
+        width: 1.3em;
+      }
+
+      .navbar-link ul {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .navbar-link ul li {
+        list-style-type: none;
+      }
+
+      .navbar-link ul li a {
+        color: var(--dark-blue);
+        font-size: 1.1em;
+        text-decoration: none;
+        transition: all ease 0.2s;
+      }
+
+      .navbar-link ul li a:hover {
+        color: #1e437c;
+      }
+
+      .btn-cta {
+        background-color: var(--dark-blue);
+        outline: none;
+        border: none;
+        padding: 0.5em;
+        border-radius: 15px;
+        color: var(--desert-sand);
+        font-size: 1.2em;
+        cursor: pointer;
+        transition: all ease 0.3s;
+      }
+
+      .btn-cta:hover {
+        background-color: #1e437c;
+      }
+
+      #menu {
+        display: none;
+        font-size: 1.8em;
+      }
+
+      @media (max-width: 768px) {
+        .logo {
+          font-size: 195%;
+        }
+
+        #menu {
+          display: inline-block;
+        }
+
+        .navbar-link {
+          position: absolute;
+          top: 14%;
+          right: -100%;
+          background-color: var(--desert-sand);
+          width: 20em;
+          height: 100vh;
+          transition: 0.5s;
+        }
+
+        .navbar-link ul {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .navbar-link.active {
+          right: 0;
+        }
+
+        .navbar-link ul li a {
+          display: block;
+          padding: 1em;
+          font-size: 1.3em;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <div class="logo">
+          <h1>Electronica</h1>
+        </div>
+        <div class="navbar-link">
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Product</a></li>
+            <li><a href="#">Testimoni</a></li>
+            <li>
+              <a href="#"><button class="btn-cta">Contact</button></a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="menu-icon">
+          <a href="#"><i id="menu" class="fa-solid fa-bars"></i></a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section>
+        <div class="judul-kontent"></div>
+      </section>
+    </main>
+
+    <script src="assets/script.js">
+      const navbarlink = document.querySelector(".navbar-link");
+
+      document.querySelector("#menu").onclick = () => {
+        navbarlink.classList.toggle("active");
+      };
+
+      const sidebar = document.querySelector("#menu");
+      document.addEventListener("click", function (klik_event) {
+        if (!sidebar.contains(klik_event.target) && !navbarlink.contains(klik_event.target)) {
+          navbarlink.classList.remove("active");
+        }
+      });
+    </script>
+  </body>
+</html>
